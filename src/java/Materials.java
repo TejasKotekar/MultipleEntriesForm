@@ -14,7 +14,7 @@ import java.sql.*;
 
 
 
-public class Facilities extends HttpServlet {
+public class Materials extends HttpServlet {
 
 
     @Override
@@ -40,16 +40,16 @@ public class Facilities extends HttpServlet {
                 con=DriverManager.getConnection(url,user,pass);
                 
                 String s2=request.getParameter("s1");
-                String[] facChk=request.getParameterValues("facChk");
-                String[] facNo=request.getParameterValues("facNo");
-                String[] fac=request.getParameterValues("fac");
-                if(s2.equals("Save")&&facChk!=null){
-                    for(int i=0;i<facChk.length;i++){
+                String[] matChk=request.getParameterValues("matChk");
+                String[] matNo=request.getParameterValues("matNo");
+                String[] mat=request.getParameterValues("mat");
+                if(s2.equals("Save")&&matChk!=null){
+                    for(int i=0;i<matChk.length;i++){
                         
                         PreparedStatement pstmt;
-                        pstmt=con.prepareStatement("insert into \"Facilities\" values(?,?)");
-                        pstmt.setInt(1,Integer.parseInt(facNo[i]));
-                        pstmt.setString(2,fac[i]);
+                        pstmt=con.prepareStatement("insert into \"Materials\" values(?,?)");
+                        pstmt.setInt(1,Integer.parseInt(matNo[i]));
+                        pstmt.setString(2,mat[i]);
                         pstmt.executeUpdate();
                     }
                     out.println("<center><h1>Records Inserted");
@@ -57,14 +57,14 @@ public class Facilities extends HttpServlet {
                     else if(s2.equals("Display")){
                     out.println("<center><h1>Records</h1></center>");
                     
-                    rs = st.executeQuery("select * from \"Facilities\"");
+                    rs = st.executeQuery("select * from \"Materials\"");
 
                 while(rs.next())
                 {
-                    int fNo=rs.getInt(1);
-                    String faclity=rs.getString(2);
+                    int mNo=rs.getInt(1);
+                    String material=rs.getString(2);
                
-                    out.println("<center><table border=1 >" + "<tr>"+"<td>"+"<input type=checkbox>" +"<td>"+"<input type=text value='"+fNo+"' >"+ "<td>" +"<input type=text value='"+faclity+"' >"+"</tr>");
+                    out.println("<center><table border=1 >" + "<tr>"+"<td>"+"<input type=checkbox>" +"<td>"+"<input type=text value='"+mNo+"' >"+ "<td>" +"<input type=text value='"+material+"' >"+"</tr>");
                     out.println("</table>"+"</center>");
                 }   
                 }

@@ -4,9 +4,25 @@
         <servlet-name>Facilities</servlet-name>
         <servlet-class>Facilities</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Materials</servlet-name>
+        <servlet-class>Materials</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Items</servlet-name>
+        <servlet-class>Items</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Facilities</servlet-name>
         <url-pattern>/Facilities</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Materials</servlet-name>
+        <url-pattern>/Materials</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Items</servlet-name>
+        <url-pattern>/Items</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
